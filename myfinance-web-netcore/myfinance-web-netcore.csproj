@@ -4,7 +4,7 @@
     <TargetFramework>net8.0</TargetFramework>
     <Nullable>enable</Nullable>
     <ImplicitUsings>enable</ImplicitUsings>
-    <RootNamespace>myfinance_web_dotnet</RootNamespace>
+    <RootNamespace>myfinance_web_netcore</RootNamespace>
   </PropertyGroup>
 
 </Project>
