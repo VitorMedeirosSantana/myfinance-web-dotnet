@@ -1,3 +1,5 @@
+using Microsoft.AspNetCore.Mvc;
+
 namespace myfinance_web_netcore.Models;
 
 public class ErrorViewModel

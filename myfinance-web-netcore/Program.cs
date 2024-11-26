@@ -1,7 +1,12 @@
+using myfinance_web_netcore.infrastructure;
+using myfinance_web_netcore.Services;
+
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
 builder.Services.AddControllersWithViews();
+builder.Services.AddDbContext<MyFinanceDBContext>();
+builder.Services.AddScoped<IPlanoContaService, PlanoContaService>();
 
 var app = builder.Build();
 

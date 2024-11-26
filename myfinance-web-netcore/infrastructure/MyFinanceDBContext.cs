@@ -12,7 +12,7 @@ namespace myfinance_web_netcore.infrastructure
 
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
-            var connectionString = @"Server";
+            var connectionString = @"Server=LOCALHOST\SQLEXPRESS;Database=myfinance;Trusted_Connection=True;TrustServerCertificate=True";
             optionsBuilder.UseSqlServer(connectionString);
         }
     }
