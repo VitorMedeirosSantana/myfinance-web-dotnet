@@ -1,4 +1,5 @@
 using Microsoft.AspNetCore.Mvc;
+using myfinance_web_netcore.Domain;
 using myfinance_web_netcore.infrastructure;
 using myfinance_web_netcore.Models;
 using myfinance_web_netcore.Services;
@@ -18,7 +19,7 @@ namespace myfinance_web_netcore.Controllers
         }
 
         [Route("Index")]
-        
+
         public IActionResult Index()
         {
             ViewBag.Lista = _planoContaService.ListarRegistros();
@@ -28,11 +29,19 @@ namespace myfinance_web_netcore.Controllers
         [HttpGet]
         [HttpPost]
         [Route("Cadastro")]
-
-        public IActionResult Cadastro(PlanoContaModel model)
+        public IActionResult Cadastro(PlanoContaModel? model)
         {
+            if (model != null && ModelState.IsValid)
+            {
+                var planoConta = new PlanoConta
+                {
+                    Id = model.Id,
+                    Nome = model.Nome,
+                    Tipo = model.Tipo
+                };
+                _planoContaService.Salvar(planoConta);
+            }
             return View();
         }
-
     }
 }

@@ -27,7 +27,16 @@ namespace myfinance_web_netcore.Services
         }
         public void Salvar(PlanoConta item)
         {
-            throw new NotImplementedException();
+            var dbSet = _myFinanceDbContext.PlanoConta;
+            if(item.Id == null)
+                dbSet.Add(item);
+            else
+            {
+                dbSet.Attach(item);
+                _myFinanceDbContext.Entry(item).State = Microsoft.EntityFrameworkCore.EntityState.Modified;
+            }
+            _myFinanceDbContext.SaveChanges();
+
         }
     }
 }
