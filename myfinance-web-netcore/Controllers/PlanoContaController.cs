@@ -29,9 +29,23 @@ namespace myfinance_web_netcore.Controllers
         [HttpGet]
         [HttpPost]
         [Route("Cadastro")]
-        public IActionResult Cadastro(PlanoContaModel? model)
+        [Route("Cadastro/{id}")]
+        public IActionResult Cadastro(PlanoContaModel? model, int? id)
         {
-            if (model != null && ModelState.IsValid)
+            if (id != null && !ModelState.IsValid)
+            {
+                var registro = _planoContaService.RetornarRegistro((int)id);
+
+                var planoContaModel = new PlanoContaModel()
+                {
+                    Id = registro.Id,
+                    Nome = registro.Nome,
+                    Tipo = registro.Tipo
+                };
+
+                return View(planoContaModel);
+            }
+            else if (model != null && ModelState.IsValid)
             {
                 var planoConta = new PlanoConta
                 {
@@ -40,8 +54,20 @@ namespace myfinance_web_netcore.Controllers
                     Tipo = model.Tipo
                 };
                 _planoContaService.Salvar(planoConta);
+                return RedirectToAction("Index");
             }
-            return View();
+            else
+            {
+                return View();
+            }
+        }
+        [HttpGet]
+        [Route("Excluir/{id}")]
+
+        public IActionResult Excluir(int id)
+        {
+            _planoContaService.Excluir(id);
+            return RedirectToAction("Index");
         }
     }
 }
