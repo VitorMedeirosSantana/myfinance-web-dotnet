@@ -1,9 +1,31 @@
-MyFinance Web (ASP.NET Core 8.0)
-O MyFinance Web é uma aplicação desenvolvida em ASP.NET Core 8.0, projetada para facilitar o gerenciamento de finanças pessoais. O sistema visa oferecer uma interface simples e eficiente para acompanhar receitas, despesas e saldo de contas, ajudando os usuários a manterem suas finanças em ordem.
+# MyFinance Web (ASP.NET Core 8.0)
 
-Pontos Importantes
-Banco de Dados: A aplicação foi configurada para utilizar o SQL Server como banco de dados.
+## Sobre:
+* MyFinance foi projetado para o gerenciamento de finanças pessoais e controle de gasto, controle de receita e despesas. 
+É poossivel cadastrar, editar e excluir as opções financeiras para gerenciar as transações. 
 
-Configuração de Conexão: O arquivo responsável pela configuração de conexão com o banco de dados é o MyFinanceDbContext.cs, localizado em myfinance-web-dotnet/Infrastructure/. Você precisará ajustar esse arquivo conforme as configurações do seu ambiente local para garantir que a conexão com o banco funcione corretamente.
+## Arquitetura:
 
-Script SQL: O script para criação da base de dados, incluindo alguns dados iniciais, está disponível no arquivo myfinance-web-dotnet/Docs/myfinance.sql. Esse script facilita a instalação da estrutura inicial do banco para começar a utilizar o sistema.
+- MVC - Model View Controller
+
+## Tecnologias utilizadas:
+- Visual Studio Code (VSC)
+- .NET v8.0
+- SQL Server.
+
+## Inicialização localmente
+Para configurar o ambiente local, siga os passos abaixo:
+
+- 1 - Clonar o repositório
+
+- 2 - Instalar os sistemas necessário 
+    - SQL Server
+    - Visual Studio Code (VSC)
+    - .NET v8.0
+  
+- 3 - Configurar o banco de dados no SQL Server
+
+- 4 - Utilizar o script fornecido na pasta Docs.
+
+- 5 - Verificar classe de configuração do banco de dados - arquivo MyFinanceDbContext:
+    - @"Server=SERVIDOR;Database=BANCO_DE_DADO;Trusted_Connection=true;TrustServerCertificate=True";
